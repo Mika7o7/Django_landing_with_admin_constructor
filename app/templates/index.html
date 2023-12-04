@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Social Business</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="{% static 'js/popups.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script defer src="https://use.fontawesome.com/releases/v6.4.0/js/all.js"></script>
+  </head>
+  <body>
+    {% for item in data.InfoSection %}
+    <img class="bagraund" src="{{ item.bg_image.url }}" alt="bagraund">
+    {% endfor %}
+    <nav>
+        {% for item in data.NavBar %}
+        
+        <div class="logo">
+          <h2>{{ item.logo }}</h2>
+        </div>
+        <div id="nav-links" class="nav-links">
+        <ul id="myLinks">
+          <div class="sub_nav">
+            <li><a onclick="toLesson({{ item.first_qordinate }}, {{ item.first_qordinate }})" style="color: #d3d100; cursor: pointer;" href="javascript:void(0);">{{ item.first_link }}</a></li>
+            <li><a onclick="Course_program({{ item.second_qordinate }}, {{ item.second_qordinate }})" href="javascript:void(0);">{{ item.second_link }}</a></li>
+            <li><a onclick="toContacts({{ item.three_qordinate }}, {{ item.three_qordinate }})" href="javascript:void(0);">{{ item.three_link }}</a></li>
+          </div>
+          <p onclick="closebar()">x</p>
+        </ul>
+        <a href="javascript:void(0);" id="icon" class="icon" onclick="openbar()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      {% endfor %}
+    </nav>
+    
+      <script>
+       
+        </script>
+    <section>
+      {% for item in data.InfoSection %}
+      <div class="info_container">
+        <p>{{ item.title }}</p>
+        <img class="main-image" src="{{ item.photo.url }}" alt="Avatar">
+        <p class="sub_info_text">{{ item.sub_title }}</p>
+        <img src="./static/images/icons/icone.svg" alt="icone">
+      </div>
+    </section>
+    <img class="rotaite-image" src="{{ item.bg_image.url }}" alt="">
+    {% endfor %}
+    <section>
+      
+      <div class="carusel_section">
+        <swiper-container class="mySwiper" navigation="true">
+          {% for item in data.CaruselSection %}
+          <swiper-slide><img src="{{ item.photo.url }}" alt=""></swiper-slide>
+          {% endfor %}
+        </swiper-container>
+      </div>
+    </section>
+    <section>
+    
+      {% for item in data.OfferSection %}
+      
+      <div class="offer_section">
+        <div>
+          <h2 style="text-align: center;">{{ item.title }}</h2>
+        
+          <div class="yellow-line" style="margin-bottom: 80px; width: 100%;"></div>
+        </div>
+        <div class="offer_info_container">
+            {% for it in item.main.all %}
+            <div>
+              <h3>{{ it.number }}</h3>
+              <div>
+                <h2>{{ it.sub_title }}</h2>
+                <div class="yellow-line"></div>
+                <p>{{ it.description }}</p>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    <section>
+      {% for item in data.CourseProgram %}
+      
+      <div class="course-program">
+        <div class="cut-block">
+          <h2>{{ item.title }}</h2>
+          <img src="./static/images/icons/white_icone.svg" alt="icon">
+        </div>
+        <div class="course-info">
+          <div class="course-info-container">
+            {% for it in item.main.all %}
+            
+            <div class="info-box">
+              <h4>{{ it.number }}</h4>
+              <div>
+                <h5>{{ it.sub_title }}</h5>
+                <div class="yellow-line"></div>
+                <p>{{ it.description }}</p>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    <section>
+      {% for item in data.EndOfCourse %}
+      
+      <div class="end-of-course">
+        <div class="cut-block">
+          <h2>{{ item.title }}</h2>
+          <img src="./static/images/icons/white_icone.svg" alt="icon">
+        </div>
+        <div class="offer_info_container" style="padding: 3rem 0;">
+          {% for it in item.main.all %}
+          <div style="margin-bottom: 40px;">
+            <h3>{{ it.number }}</h3>
+            <div>
+            <h2>{{ it.sub_title }}</h2>
+            <div class="yellow-line"></div>
+            <p>{{ it.description }}</p>
+          </div>
+          </div>
+          {% endfor %}
+          
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    <section>
+      <!-- course conducted -->
+      {% for item in data.CourseConducted %}
+      
+      <div class="end-of-course">
+        <div class="cut-block">
+          <h2>{{ item.title }}</h2>
+          <img src="./static/images/icons/white_icone.svg" alt="icon">
+        </div>
+        <div class="offer_info_container" style="padding: 3rem 0;">
+          
+          {% for it in item.main.all %}
+          <div>
+            <h3>{{ it.number }}</h3>
+            <div style="max-width: 800px;">
+            <h2>{{ it.sub_title }}</h2>
+            <div class="yellow-line"></div>
+            <p>{{ it.description }}</p>
+          </div>
+          </div>
+          {% endfor %}
+      
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    <section>
+      {% for item in data.SpecialOffer %}
+      
+      <div class="special-offer">
+        <div class="cut-block">
+          <h2 style="font-size: 20px; color: red; margin-bottom: 30px;">{{ item.sub_title }}</h2>
+          
+          <h2>{{ item.title }}</h2>
+          <img src="./static/images/icons/white_icone.svg" alt="icon">
+        </div>
+        <div id="special-offer-info" class="special-offer-info">
+          <p>{{ item.description_1 }}</p>
+          <br>
+          <p>{{ item.description_2 }}</p>
+            <div>
+              <div style="width: 100%;" class="yellow-line"></div>
+              <p class="between-yellow">{{ item.description_3 }}</p>
+              <div style="width: 100%;" class="yellow-line"></div>
+            </div>
+            <p>{{ item.description_4 }}</p>
+            <img src="./static/images/icons/icone.svg" alt="icone">
+
+            <button onclick="openForm()" class="offer-button popup-link">{{ item.button }}</button>
+
+            {% endfor %}
+
+
+
+            <div id="popup" class="popup">
+              <div class="popup_body">
+                <div class="container" style="align-items: center;">
+      <div style="font-size: 18px; width: 400px; font-weight: bold;">
+        Լրացրեք ձեր տվյալները և ես կկապվեմ ձեզ հետ առաջիկա տասը րոպեների ընթացքում 🤗
+      </div>
+      <div class="form-error">{{data.form.non_field_errors}}</div>
+      <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        <p onclick="closeForm()" class="popup_close">x</p>
+         <div class="form-row">
+            <div class="input-data">
+               <input name="first_name" type="text" required>
+               <div class="underline"></div>
+               <label for="{{ data.form.first_name.id_for_lable }}">Անուն</label>
+               <div class="form-error">{{ data.form.first_name.errors }}</div>
+            </div>
+            <div class="input-data">
+               <input name="last_name" type="text" required>
+               <div class="underline"></div>
+               <label for="{{ data.form.last_name.id_for_lable }}">Ազգանուն</label>
+               <div class="form-error">{{ data.form.last_name.errors }}</div>
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="input-data">
+               <input name="phone" type="text" required>
+               <div class="underline"></div>
+               <label for="{{ data.form.phone.id_for_lable }}">Հեր․</label>
+               <div class="form-error">{{ data.form.phone.errors }}</div>
+            </div>
+         </div>
+      
+            <div class="form-row submit-btn">
+               <div class="input-data">
+                  <div class="inner"></div>
+                  <input type="submit" value="Ուղարկել">
+               </div>
+            </div>
+      </form>
+      </div>
+                
+              </div>
+            </div>
+        </div>  
+        
+      </div>
+    </section>
+    <footer>
+      <div class="footer-conteiner">
+        {% for item in data.Contacts %}
+        
+        <div class="contact">
+          <h2 style="color: white; font-size: 30px;">{{ item.title }}</h2>
+          <br>
+          <div class="icons">
+            <a href="{{ item.href_1.url }}"><img style="width: 20px; height: 20px;" src="{{ item.icon_1.url }}" alt="icone"></a>
+            <a href="{{ item.href_2.url }}"><img style="width: 20px; height: 20px;" src="{{ item.icon_2.url }}" alt="icone"></a>
+          </div>
+          <br>
+          <p>Tel: {{ item.tel }}</p>
+          <p>Email: {{ item.email }}</p>
+        </div>
+        {% endfor %}
+        <div></div>
+        <!-- scrole top -->
+        <button id="buttonUp" class="buttonUp">
+          <img  style="transform: rotate(180deg);" src="./static/images/icons/icone.svg" alt="">
+        </button>
+      </div>
+    <div class="copy-right">
+      <p>© 2035 by Mika Ohanyan. Powered and secured by Mika</p>
+    </div>
+
+    </footer>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
