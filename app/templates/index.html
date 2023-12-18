@@ -9,6 +9,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <script src="{% static 'js/popups.js' %}"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -69,19 +70,19 @@
       {% for item in data.OfferSection %}
       
       <div class="offer_section">
-        <div>
-          <h2 style="text-align: center;">{{ item.title }}</h2>
-        
-          <div class="yellow-line" style="margin-bottom: 80px; width: 100%;"></div>
+        <div class="cut-block">
+          <p>{{ item.title }}</p>
+          <img src="./static/images/icons/white_icone.svg" alt="icon">
         </div>
-        <div class="offer_info_container">
+        
+        <div class="offer_info_container" style="margin-top: 3rem;">
             {% for it in item.main.all %}
             <div>
               <h3>{{ it.number }}</h3>
               <div>
-                <h2>{{ it.sub_title }}</h2>
-                <div class="yellow-line"></div>
-                <p>{{ it.description }}</p>
+                <h2 data-aos="flip-left" data-aos-duration="1500" >{{ it.sub_title }}</h2>
+                <div data-aos="flip-left" data-aos-duration="1500" class="yellow-line"></div>
+                <p data-aos="flip-left" data-aos-duration="1500" >{{ it.description }}</p>
               </div>
             </div>
             {% endfor %}
@@ -94,25 +95,27 @@
       
       <div class="course-program">
         <div class="cut-block">
-          <h2>{{ item.title }}</h2>
+          <p>{{ item.title }}</p>
           <img src="./static/images/icons/white_icone.svg" alt="icon">
         </div>
-        <div class="course-info">
+
+
+
           <div class="course-info-container">
             {% for it in item.main.all %}
             
             <div class="info-box">
               <h4>{{ it.number }}</h4>
               <div>
-                <h5>{{ it.sub_title }}</h5>
-                <div class="yellow-line"></div>
-                <p>{{ it.description }}</p>
+                <h5 data-aos="flip-left" data-aos-duration="1500">{{ it.sub_title }}</h5>
+                <div data-aos="flip-left" data-aos-duration="1500" class="yellow-line"></div>
+                <p data-aos="flip-left" data-aos-duration="1500">{{ it.description }}</p>
               </div>
             </div>
             {% endfor %}
             
           </div>
-        </div>
+
       </div>
       {% endfor %}
     </section>
@@ -121,17 +124,17 @@
       
       <div class="end-of-course">
         <div class="cut-block">
-          <h2>{{ item.title }}</h2>
+          <p>{{ item.title }}</p>
           <img src="./static/images/icons/white_icone.svg" alt="icon">
         </div>
         <div class="offer_info_container" style="padding: 3rem 0;">
           {% for it in item.main.all %}
-          <div style="margin-bottom: 40px;">
-            <h3>{{ it.number }}</h3>
+          <div>
+            <h3 data-aos="flip-left" data-aos-duration="1500">{{ it.number }}</h3>
             <div>
-            <h2>{{ it.sub_title }}</h2>
-            <div class="yellow-line"></div>
-            <p>{{ it.description }}</p>
+            <h2 data-aos="flip-left" data-aos-duration="1500">{{ it.sub_title }}</h2>
+            <div data-aos="flip-left" data-aos-duration="1500" class="yellow-line"></div>
+            <p data-aos="flip-left" data-aos-duration="1500">{{ it.description }}</p>
           </div>
           </div>
           {% endfor %}
@@ -146,18 +149,18 @@
       
       <div class="end-of-course">
         <div class="cut-block">
-          <h2>{{ item.title }}</h2>
+          <p>{{ item.title }}</p>
           <img src="./static/images/icons/white_icone.svg" alt="icon">
         </div>
         <div class="offer_info_container" style="padding: 3rem 0;">
           
           {% for it in item.main.all %}
           <div>
-            <h3>{{ it.number }}</h3>
+            <h3 data-aos="flip-left" data-aos-duration="1500">{{ it.number }}</h3>
             <div style="max-width: 800px;">
-            <h2>{{ it.sub_title }}</h2>
-            <div class="yellow-line"></div>
-            <p>{{ it.description }}</p>
+            <h2 data-aos="flip-left" data-aos-duration="1500">{{ it.sub_title }}</h2>
+            <div data-aos="flip-left" data-aos-duration="1500" class="yellow-line"></div>
+            <p data-aos="flip-left" data-aos-duration="1500">{{ it.description }}</p>
           </div>
           </div>
           {% endfor %}
@@ -171,24 +174,23 @@
       
       <div class="special-offer">
         <div class="cut-block">
-          <h2 style="font-size: 20px; color: red; margin-bottom: 30px;">{{ item.sub_title }}</h2>
+          <p class="red-p">{{ item.sub_title }}</p>
           
-          <h2>{{ item.title }}</h2>
+          <p>{{ item.title }}</p>
           <img src="./static/images/icons/white_icone.svg" alt="icon">
         </div>
         <div id="special-offer-info" class="special-offer-info">
-          <p>{{ item.description_1 }}</p>
-          <br>
-          <p>{{ item.description_2 }}</p>
+          <p data-aos="flip-left" data-aos-duration="1500">{{ item.description_1 }}</p>
+          <p data-aos="flip-left" data-aos-duration="1500">{{ item.description_2 }}</p>
             <div>
-              <div style="width: 100%;" class="yellow-line"></div>
-              <p class="between-yellow">{{ item.description_3 }}</p>
-              <div style="width: 100%;" class="yellow-line"></div>
+              <div data-aos="flip-left" data-aos-duration="1500" style="width: 100%;" class="yellow-line"></div>
+              <p data-aos="flip-left" data-aos-duration="1500" class="between-yellow">{{ item.description_3 }}</p>
+              <div data-aos="flip-left" data-aos-duration="1500" style="width: 100%;" class="yellow-line"></div>
             </div>
-            <p>{{ item.description_4 }}</p>
+            <p data-aos="flip-left" data-aos-duration="1500">{{ item.description_4 }}</p>
             <img src="./static/images/icons/icone.svg" alt="icone">
 
-            <button onclick="openForm()" class="offer-button popup-link">{{ item.button }}</button>
+            <button onclick="openForm()" data-aos="flip-left" data-aos-duration="1500" class="offer-button popup-link">{{ item.button }}</button>
 
             {% endfor %}
 
@@ -198,7 +200,7 @@
               <div class="popup_body">
                 <div class="container" style="align-items: center;">
       <div style="font-size: 18px; width: 400px; font-weight: bold;">
-        Լրացրեք ձեր տվյալները և ես կկապվեմ ձեզ հետ առաջիկա տասը րոպեների ընթացքում 🤗
+        Թողեք ձեր տվյալներ և ես հնարավորինս շուտ կկապվեմ ձեզ հետ
       </div>
       <div class="form-error">{{data.form.non_field_errors}}</div>
       <form action="{% url 'home' %}" method="post">
@@ -269,6 +271,10 @@
     </div>
 
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
 

@@ -1,9 +1,18 @@
-from django.views.generic.base import TemplateView
 from .forms import UserForm
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .models import User, NavBar, InfoSection, CaruselSection, MainStyle, OfferSection, CourseProgram, EndOfCourse, CourseConducted, SpecialOffer, Contacts
-
+from .models import (
+    User,
+    NavBar,
+    InfoSection,
+    CaruselSection,
+    MainStyle,
+    OfferSection,
+    CourseProgram,
+    EndOfCourse,
+    CourseConducted,
+    SpecialOffer,
+    Contacts,
+)
 
 
 
